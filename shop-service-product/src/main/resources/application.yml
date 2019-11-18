@@ -1,0 +1,15 @@
+server:
+  port: 9011
+
+spring:
+  application:
+    name: shop-service-product
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localserver:3306/cloudlearn?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+  jpa:
+    database: mysql
+    show-sql: true
+    open-in-view: true
