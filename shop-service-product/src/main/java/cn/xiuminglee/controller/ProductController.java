@@ -35,6 +35,9 @@ public class ProductController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Product findById(@PathVariable Long id) {
+        if(id !=1 ) {
+            throw new RuntimeException("太忙了");
+        }
         Product product = productService.findById(id);
         product.setProductName("访问的服务地址:"+ip + ":" + port);
         return product;

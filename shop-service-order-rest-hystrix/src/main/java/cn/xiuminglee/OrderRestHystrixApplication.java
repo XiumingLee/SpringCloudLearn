@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @EntityScan("cn.xiuminglee.entity")
 @SpringCloudApplication
+@EnableHystrixDashboard
 public class OrderRestHystrixApplication {
     public static void main(String[] args) {
         SpringApplication.run(OrderRestHystrixApplication.class,args);

@@ -11,3 +11,11 @@ eureka:
 spring:
   application:
     name: shop-service-order-rest-hystrix
+
+
+## 暴露所有的监控信息，该配置是actuator的
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
