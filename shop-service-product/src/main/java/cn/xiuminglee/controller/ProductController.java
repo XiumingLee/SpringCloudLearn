@@ -3,6 +3,7 @@ package cn.xiuminglee.controller;
 import cn.xiuminglee.entity.Product;
 import cn.xiuminglee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +15,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
+
+    @Value("${server.port}")
+    private String port;
+
+    /** spring cloud 自动的获取当前应用的ip地址 */
+    @Value("${spring.cloud.client.ip-address}")
+    private String ip;
+
 
     @Autowired
     private ProductService productService;
@@ -27,6 +36,7 @@ public class ProductController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Product findById(@PathVariable Long id) {
         Product product = productService.findById(id);
+        product.setProductName("访问的服务地址:"+ip + ":" + port);
         return product;
     }
 
