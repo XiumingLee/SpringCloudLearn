@@ -1,5 +1,5 @@
 server:
-  port: 9011
+  port: ${PORT:9011}
 
 spring:
   application:
@@ -13,3 +13,12 @@ spring:
     database: mysql
     show-sql: true
     open-in-view: true
+
+eureka:
+  client:
+    serviceUrl: # eureka server的路径
+      defaultZone: http://localhost:8001/eureka/
+  instance:
+    prefer-ip-address: true #使用ip注册 在服务注册中心中显示真实的IP地址
+#    lease-renewal-interval-in-seconds: 5 #向注册中心中注册服务id
+#    lease-expiration-duration-in-seconds: 10 #续约到期的时间
