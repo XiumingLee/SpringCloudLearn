@@ -1,0 +1,22 @@
+server:
+  port: 9032
+
+#配置Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+  instance:
+    prefer-ip-address: true #使用ip地址注册
+spring:
+  application:
+    name: shop-service-order-feign-sentinel
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8080   #sentinel控制台的请求地址
+
+#激活sentinel的支持
+feign:
+  sentinel:
+    enabled: true
