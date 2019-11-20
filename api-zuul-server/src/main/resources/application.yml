@@ -1,0 +1,40 @@
+server:
+  port: 8031
+spring:
+  application:
+    name: api-zuul-server
+
+###路由配置 （1）
+#zuul:
+#  routes:
+#    # 商品微服务
+#    shop-product-service: #路由id,随便写
+#      path: /product-service/** #映射路径  #localhost:8031/product-service/**
+#      url: http://127.0.0.1:9011 #映射路径对应的实际微服务url地址,将会去请求 127.0.0.1:9011/**
+#      sensitiveHeaders: #默认zuul会屏蔽cookie，cookie不会传到下游服务，这里设置为空则取消默认的黑名单，如果设置了具体的头信息则不会传到下游服务
+
+#配置路由规则 (2)
+#zuul:
+#  routes:
+#    shop-product-service: # 这里是路由id，随意写
+#      path: /product-service/** # 这里是映射路径
+#      serviceId: shop-service-product #配置转发的微服务名称
+
+
+#配置路由规则 (3)
+#zuul:
+#  routes:
+#    shop-service-product: /product-service/**
+
+#配置路由规则 (4) 默认路由 服务名：shop-service-product ---> /shop-service-product/***
+
+
+#配置Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+      registry-fetch-interval-seconds: 5 # 获取服务列表的周期:5s
+  instance:
+    prefer-ip-address: true #使用ip地址注册
+    ip-address: 127.0.0.1
