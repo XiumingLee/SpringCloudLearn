@@ -9,7 +9,6 @@ import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
@@ -17,7 +16,7 @@ import reactor.core.publisher.Mono;
  * 自定义一个全局过滤器
  *      实现 globalfilter , ordered接口
  */
-@Component  // 注册到Spring容器中即可生效
+//@Component  // 注册到Spring容器中即可生效
 public class LoginFilter implements GlobalFilter, Ordered {
 
     /**

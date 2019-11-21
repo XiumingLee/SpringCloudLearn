@@ -3,13 +3,27 @@ server:
 spring:
   application:
     name: api-gateway-server
-# 路由规则(4) 推荐
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true # 开启根据微服务名称自动转发
-          lower-case-service-id: true # 微服务名称已小写形式呈现
+      routes:
+        - id: product-service
+          uri: lb://shop-service-product
+          predicates:
+            - Path=/shop-service-product/**
+          filters:
+            - RewritePath=/shop-service-product/(?<segment>.*), /$\{segment}
+#            - name: RequestRateLimiter
+#              args:
+#                # 使用SpEL从容器中获取对象
+#                key-resolver: '#{@pathKeyResolver}'
+#                # 令牌桶每秒填充平均速率
+#                redis-rate-limiter.replenishRate: 1
+#                # 令牌桶的上限
+#                redis-rate-limiter.burstCapacity: 3
+#  redis:
+#    host: localserver
+#    port: 6379
+
 # 路由规则(1)
 #  cloud:
 #    gateway:
@@ -36,7 +50,13 @@ spring:
 #            - Path=/shop-service-product/**
 #          filters:
 #            - RewritePath=/shop-service-product/(?<segment>.*), /$\{segment}
-
+# 路由规则(4)
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true # 开启根据微服务名称自动转发
+#          lower-case-service-id: true # 微服务名称已小写形式呈现
 eureka:
   client:
     serviceUrl: # eureka server的路径
