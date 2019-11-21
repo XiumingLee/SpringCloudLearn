@@ -1,0 +1,46 @@
+server:
+  port: 8032
+spring:
+  application:
+    name: api-gateway-server
+# 路由规则(4) 推荐
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 开启根据微服务名称自动转发
+          lower-case-service-id: true # 微服务名称已小写形式呈现
+# 路由规则(1)
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: product-service
+#        uri: http://127.0.0.1:9011
+#        predicates:
+#        - Path=/product/**
+# 路由规则(2)
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: product-service
+#        uri: lb://shop-service-product
+#        predicates:
+#        - Path=/product/**
+# 路由规则(3)
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: product-service
+#          uri: lb://shop-service-product
+#          predicates:
+#            - Path=/shop-service-product/**
+#          filters:
+#            - RewritePath=/shop-service-product/(?<segment>.*), /$\{segment}
+
+eureka:
+  client:
+    serviceUrl: # eureka server的路径
+      defaultZone: http://localhost:8001/eureka/
+      registry-fetch-interval-seconds: 5 # 获取服务列表的周期:5s
+  instance:
+    prefer-ip-address: true
