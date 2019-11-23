@@ -11,3 +11,9 @@ eureka:
 spring:
   application:
     name: shop-service-order
+
+logging:
+  level:
+    root: info
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+    org.springframework.cloud.sleuth: DEBUG

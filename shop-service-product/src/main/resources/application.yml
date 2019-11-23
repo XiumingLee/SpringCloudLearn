@@ -22,3 +22,9 @@ eureka:
     prefer-ip-address: true #使用ip注册 在服务注册中心中显示真实的IP地址
 #    lease-renewal-interval-in-seconds: 5 #向注册中心中注册服务id
 #    lease-expiration-duration-in-seconds: 10 #续约到期的时间
+
+logging:
+  level:
+    root: info
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+    org.springframework.cloud.sleuth: DEBUG
