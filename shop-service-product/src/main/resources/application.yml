@@ -13,6 +13,13 @@ spring:
     database: mysql
     show-sql: true
     open-in-view: true
+  zipkin:
+    base-url: http://127.0.0.1:9411 #zipkin server的请求地址
+    sender:
+      type: web  #数据的传输方式 , 以http的形式向server端发送数据
+    sleuth:
+      sampler:
+        probability: 1 #采样比
 
 eureka:
   client:
