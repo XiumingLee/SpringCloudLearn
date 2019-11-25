@@ -1,10 +1,10 @@
 package cn.xiuminglee;
 
+import cn.xiuminglee.producer.MessageProductSender;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.messaging.MessageChannel;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
@@ -16,6 +16,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class StreamProducerTest {
 
     @Autowired
-    @Qualifier("output")
-    MessageChannel output;
+    private MessageProductSender sender;
+
+    @Test
+    public void testSend() {
+        sender.send("自定义通道消息测试！");
+    }
 }
