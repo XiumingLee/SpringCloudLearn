@@ -20,6 +20,10 @@ public class StreamProducerTest {
 
     @Test
     public void testSend() {
-        sender.send("自定义通道消息测试！");
+        for (int i = 0; i <5 ; i++) {
+            sender.send("0");
+            sender.send("1");
+            sender.send("2");
+        }
     }
 }
