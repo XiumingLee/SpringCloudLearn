@@ -1,0 +1,14 @@
+server:
+  port: 7002
+spring:
+  application:
+    name: stream-producer #指定服务名
+  rabbitmq:
+    addresses: 127.0.0.1
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        input: #通道名称 内置的获取消息的通道 , 从xiuming-stream中获取消息
+          destination: xiuming-stream

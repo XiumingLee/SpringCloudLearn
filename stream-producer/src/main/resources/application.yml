@@ -1,0 +1,14 @@
+server:
+  port: 7001
+spring:
+  application:
+     name: stream-producer #指定服务名
+  rabbitmq:
+     addresses: 127.0.0.1
+     username: guest
+     password: guest
+  cloud:
+     stream:
+        bindings:
+           output:
+             destination: xiuming-stream  #指定消息发送的目的地,在rabbitmq中,发送到一个xiuming-stream的exchange中
